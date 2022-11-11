@@ -1,16 +1,17 @@
 import { StyleSheet } from "react-native";
+import { ThemeColors } from "../../../utils/constant";
 
 export const styles = StyleSheet.create({
     input: {
-        color: "#ddb52f",
-        borderBottomColor: "#ddb52f",
+        color: ThemeColors.secondary,
+        borderBottomColor: ThemeColors.secondary,
         borderWidth: 1,
         marginVertical: 8,
         fontWeight: "bold",
         fontSize: 32,
         width: 50,
-        borderLeftColor: "#003459",
-        borderRightColor: "#003459",
-        borderTopColor: "#003459"
+        borderLeftColor: ThemeColors.backgroundPrimary,
+        borderRightColor: ThemeColors.backgroundPrimary,
+        borderTopColor: ThemeColors.backgroundPrimary
     },
 })

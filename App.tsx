@@ -1,17 +1,14 @@
 import React from 'react';
 import {
+    SafeAreaView,
     StyleSheet,
     useColorScheme,
-    View,
+    StatusBar,
 } from 'react-native';
 
-import {
-    Colors,
-} from 'react-native/Libraries/NewAppScreen';
-import CustomButton from './src/components/atoms/Button';
-import CustomHeading from './src/components/atoms/Heading';
-import CustomInput from './src/components/atoms/Input';
-import Home from './src/screens/Home';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Navigation from './src/navigations';
+import {ThemeColors} from './src/utils/constant';
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
@@ -21,24 +18,20 @@ const App = () => {
     };
 
     return (
-        <View style={styles.appContainer}>
-            <Home/>
-            {/* <CustomHeading title='Guess My Number'/>
-            <CustomButton title='Reset' />
-            <CustomButton title='Test' />
-            <CustomInput /> */}
-        </View>
+        <>
+            {/* // SafeAreaView => is for adding space on top for notches and avoid content collapse */}
+            <SafeAreaView style={styles.appContainer}>
+                <StatusBar barStyle="light-content" />
+                <Navigation />
+            </SafeAreaView>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
     appContainer: {
         flex: 1,
-        maxWidth: "100%",
-        maxHeight: "100%",
-        backgroundColor: "#FFFFFF",
-        // padding: 20
-    }
+    },
 });
 
 export default App;

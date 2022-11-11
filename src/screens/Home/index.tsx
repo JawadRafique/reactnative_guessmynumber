@@ -1,5 +1,5 @@
 import React from 'react'
-import GuessMyNumber from '../../components/organism/GuessMyNumber'
+import GuessMyNumber from '../../components/organism/SelectNumber'
 
 function Home() {
   return (

@@ -1,4 +1,5 @@
 import { View, Text, TextInput } from 'react-native'
+import { ThemeColors } from '../../../utils/constant';
 import { styles } from './input.styles';
 
 export type Props = {
@@ -14,7 +15,7 @@ const CustomInput: React.FC<Props> = ({inputVal,setInputVal}) => {
         value={inputVal}
         keyboardType="numeric"
         maxLength={2}
-        cursorColor="#ddb52f"
+        cursorColor={ThemeColors.secondary}
       />
   )
 }
