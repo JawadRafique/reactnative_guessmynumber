@@ -4,8 +4,7 @@ import {ThemeColors} from '../../../utils/constant';
 export const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: ThemeColors.backgroundPrimary,
-        width: '100%',
+        // width: '100%',
         padding: 20,
     },
     inputHeading: {

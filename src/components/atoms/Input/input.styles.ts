@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         borderBottomColor: ThemeColors.secondary,
         borderWidth: 1,
         marginVertical: 8,
-        fontWeight: "bold",
+        fontFamily: "OpenSans-Bold",
         fontSize: 32,
         width: 50,
         borderLeftColor: ThemeColors.backgroundPrimary,

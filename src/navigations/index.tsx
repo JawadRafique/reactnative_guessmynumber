@@ -13,7 +13,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 const Navigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='Home' screenOptions={{header: () => null, headerStyle: {elevation : 0}, cardStyle: {backgroundColor: ThemeColors.backgroundPrimary}}}>
+            <Stack.Navigator defaultScreenOptions={{}} initialRouteName='Home' screenOptions={{header: () => null}}>
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Information" component={Information} />
                 <Stack.Screen name="gameOver" component={GameOver} />

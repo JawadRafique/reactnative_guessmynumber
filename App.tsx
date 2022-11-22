@@ -4,11 +4,13 @@ import {
     StyleSheet,
     useColorScheme,
     StatusBar,
+    useWindowDimensions,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Navigation from './src/navigations';
-import {ThemeColors} from './src/utils/constant';
+import { ThemeColors } from './src/utils/constant';
+import { vh, vw } from './src/utils/units';
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
     appContainer: {
         flex: 1,
     },
+    
 });
 
 export default App;

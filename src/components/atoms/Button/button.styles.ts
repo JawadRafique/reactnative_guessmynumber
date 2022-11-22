@@ -9,12 +9,12 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 38,
         paddingVertical: 8,
         marginBottom: 8,
-        // minWidth: 140
     },
     text: {
         color: ThemeColors.white,
         fontSize: 22,
         textAlign: "center",
-        textTransform: "uppercase"
+        textTransform: "uppercase",
+        fontFamily: "OpenSans-Regular"
     }
 })

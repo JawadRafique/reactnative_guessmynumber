@@ -10,7 +10,6 @@ type Props = {
 };
 
 const List: React.FC<Props> = ({rounds}) => {
-    console.log("rounds",rounds)
     return (
         <SafeAreaView style={styles.container}>
             <FlatList

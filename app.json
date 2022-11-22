@@ -1,5 +1,6 @@
 {
   "name": "GuessMyNumber",
   "displayName": "GuessMyNumber",
-  "background-color": "transparent"
+  "background-color": "transparent",
+  "orientation": "default"
 }

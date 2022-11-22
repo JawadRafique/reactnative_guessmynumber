@@ -1,4 +1,4 @@
-import {View, Alert, Text} from 'react-native';
+import {View, Alert, Text, useWindowDimensions} from 'react-native';
 import React, {useState, useMemo, useEffect} from 'react';
 import CustomHeading from '../../atoms/Heading';
 import {styles} from './guessAndSteps.styles';
@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import List from '../../molecules/List';
 import {AppStackParamList} from '../../../types/navigations';
+import useOrientation from '../../../hooks/useOrientation';
 
 export type Props = {
     selectedNumber: number;
@@ -24,7 +25,6 @@ const generateRandomNumber = (
     exclude: number,
 ): number => {
     const randomNum = Math.floor(Math.random() * (max - min)) + min;
-    console.log("min max", `${min} ${max}`)
     if (randomNum === exclude) {
         return generateRandomNumber(min, max, exclude);
     } else {
@@ -36,10 +36,12 @@ let minBoundary = 1;
 let maxBoundary = 100;
 
 const GuessAndSteps: React.FC<Props> = ({selectedNumber}) => {
+    const {width, height, isPortrait} = useOrientation();
+
     const navigation = useNavigation<gameOverScreenNavigationType>();
 
     // Alternate to this func
-    const initialGuess = generateRandomNumber(1, 100, selectedNumber)
+    const initialGuess = generateRandomNumber(1, 100, selectedNumber);
     // const initialGuess = useMemo(
     //     () => generateRandomNumber(minBoundary, maxBoundary, selectedNumber),
     //     [selectedNumber],
@@ -49,7 +51,7 @@ const GuessAndSteps: React.FC<Props> = ({selectedNumber}) => {
 
     useEffect(() => {
         if (selectedNumber === currentGuess) {
-            minBoundary= 1;
+            minBoundary = 1;
             maxBoundary = 100;
 
             navigation.navigate('gameOver', {
@@ -83,23 +85,43 @@ const GuessAndSteps: React.FC<Props> = ({selectedNumber}) => {
         setCurrentGuess(newRandomNum);
     };
 
-    console.log('selectedNumber', selectedNumber);
+    // const fillWidth = width <380 ? "100%": "60%"
+    const direction = isPortrait ? 'column' : 'row-reverse';
+    const childWidth = width > 640 ? width / 2 : width;
+
     return (
-        <View style={styles.container}>
-            <CustomHeading title="Opponent Guess" />
-            <NumberContainer>{currentGuess}</NumberContainer>
-            <View style={styles.buttonContainer}>
-                <PrimaryButton
-                    title="Lower"
-                    onPress={nextGuessHandler.bind(this, 'lower')}
-                />
-                <PrimaryButton
-                    title="Higher"
-                    onPress={nextGuessHandler.bind(this, 'higher')}
-                />
+        <View
+            style={[
+                styles.container,
+                {
+                    maxWidth: width,
+                    overflow: 'hidden',
+                    flexDirection: direction,
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                },
+            ]}>
+            <View style={{width: childWidth, alignItems: 'center'}}>
+                <CustomHeading title="Opponent Guess" />
+                <NumberContainer>{currentGuess}</NumberContainer>
+                <View
+                    style={[
+                        styles.buttonContainer,
+                        {flexDirection: isPortrait ? 'row': "column"},
+                    ]}>
+                    <PrimaryButton
+                        title="Lower"
+                        onPress={nextGuessHandler.bind(this, 'lower')}
+                    />
+                    <PrimaryButton
+                        title="Higher"
+                        onPress={nextGuessHandler.bind(this, 'higher')}
+                    />
+                </View>
             </View>
-            {/* {guessRounds.map((item, i) => <Text key={i}>{item}</Text>)} */}
-            <List rounds={guessRounds} />
+            <View style={{width: childWidth, alignItems: 'center'}}>
+                <List rounds={guessRounds} />
+            </View>
         </View>
     );
 };
