@@ -1,4 +1,4 @@
-# Guess My Number - React Native CLI
+# Guess My Number - (React Native CLI)
 
 #### Topics Covered
 
@@ -10,4 +10,4 @@
 - [x] Custom Fonts
 - [ ] Redux
 - [ ] Api Integration
-- [ ] Ios Specific
+- [ ] iOS Specific
